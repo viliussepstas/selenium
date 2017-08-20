@@ -8,7 +8,7 @@ driver = webdriver.Chrome(executable_path = path_to_chromedriver)
 url = 'https://jobs.theguardian.com/jobs/finance-and-accounting/#browsing'
 driver.get(url)
 
-def get_headers(driver, header_list):
+def get_headers(driver):
 
     mainurl = driver.current_url
     header_list = driver.find_elements_by_class_name('lister__view-details')
@@ -17,6 +17,6 @@ def get_headers(driver, header_list):
 	    driver.get(header.get_attribute("href"))
 
     if driver.find_elements_by_xpath('//h1'):
-        print header_list, driver.find_elements_by_xpath('//h1').text
+        print header.text, driver.find_elements_by_xpath('//h1').text
 
         driver.get(mainurl)
